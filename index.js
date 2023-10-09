@@ -32,7 +32,7 @@ async function axiosTest() {
     return response.data;
 }
 
-app.get('/restaurantId',  async (req, res) => {
+app.get('/',  async (req, res) => {
     var data = await axiosTest();
     console.log("1_" + data);
     // let config = {
