@@ -8,6 +8,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
 app.get('/', (req, res) => {
+    console.log(13);
     res.json({ "message": "hello world" });
 });
 
