@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
 const axios = require('axios');
+const { json } = require('express/lib/response');
 
 
 const app = express();
@@ -10,7 +11,7 @@ app.use(cors());
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
-app.get('/', (req, res) => {
+app.get('/restaurantId', (req, res) => {
     let config = {
         method: 'get',
         url: 'https://gappapi.deliverynow.vn/api/delivery/get_from_url?url=ho-chi-minh/com-ba-ghien-nguyen-van-troi',
@@ -30,13 +31,11 @@ app.get('/', (req, res) => {
     axios.request(config)
         .then((response) => {
             console.log(1321313);
-            console.log(JSON.stringify(response.data));
+            res.status(200).json(response.data);
         })
         .catch((error) => {
             console.log(error);
         });
-    console.log(13);
-    res.status(200).json({ "message": "hello world" });
 });
 
 const port = 8080;
